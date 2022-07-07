@@ -1,0 +1,12 @@
+.year-input-container {
+    display: flex;
+    padding: 8px 0;
+    align-items: center;
+}
+
+input.radio-button {
+    margin-right: 10px;
+    margin-left: 5px;
+    height: 15px;
+    width: 15px;
+}
