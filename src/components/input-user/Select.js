@@ -10,11 +10,11 @@ const Select = ({ title, options, value, handleChange, name }) => {
                 <select onChange={handleChange} className='select-jual-mobil' name={name} id={title} value={value}>
                 <option value=''></option>
                 {
-                    options && options.map(item => {
-                        const stuff = item.group_model || item.brand || item.model;
+                    options && options.map((item, i) => {
+                        const stuff = item.groupModel || item.brand || item.model;
 
                         return (
-                            <option key={item.id} value={stuff || item}>{stuff || item}</option>
+                            <option key={item.id + i.toString()} value={stuff || item}>{stuff || item}</option>
                         )
                     })
                 }

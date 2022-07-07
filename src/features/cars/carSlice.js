@@ -32,6 +32,7 @@ export const applyFilter = (filters) => (dispatch, getState) => {
 
     
     const currentCars = selectCars(getState())
+    
     const newCars = selectNewCars(getState())
     const currentYear = new Date().getFullYear();
     
@@ -50,7 +51,7 @@ export const applyFilter = (filters) => (dispatch, getState) => {
     if (selectedModel.length !== 0) {
         filteredCars = filteredCars.filter(x => {
             return selectedModel.some(f => {
-                return f.group_model === x.group_model
+                return f.groupModel === x.groupModel
             })
         })
 

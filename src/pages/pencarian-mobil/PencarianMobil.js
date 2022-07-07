@@ -42,7 +42,7 @@ const PencarianMobil = () => {
                             <div className='card'>
                                 <img src={item.img} alt="cars"  />
                                 <div className='cars-info-container'>
-                                    <h4 className='cars-text'>{item.brand} {item.group_model}</h4>
+                                    <h4 className='cars-text'>{item.brand} {item.groupModel}</h4>
                                     <p className='cars-text'>{item.model}</p>
                                     <p>{item.year}</p>
                                 </div>

@@ -14,7 +14,7 @@ const BrandAndModel = ({ title, options, handleFilterChange }) => {
                 options && options.map((item, index) => (
                     <ChekboxList
                         key={item.id}
-                        name={item.group_model || item.brand}
+                        name={item.groupModel || item.brand}
                         handleOnChange={handleOnChange}
                         index={index}
                         type='brands'

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import Select from '../../components/input-user/Select'
 import { addCars } from '../../features/cars/carSlice'
@@ -12,32 +12,18 @@ const JualMobil = () => {
     const [listTypes] = useState(typesList)
     const defaultValue = {
         year: 0,
-        name: '',
-        merek: '',
+        groupModel: '',
+        brand: '',
         status: '',
-        type: '',
-        img: 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg'
+        model: '',
     }
+
+    const noPhoto = 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg';
     const [userInput, setUserInput] = useState(defaultValue)
 
     const dispatch = useDispatch()
 
     const [selectedImage, setSelectedImage] = useState(null);
-
-    useEffect(() => {
-        if (selectedImage) {
-            setUserInput({
-                ...userInput,
-                img: URL.createObjectURL(selectedImage)
-            })
-        } else {
-            setUserInput({
-                ...userInput,
-                img: 'https://t4.ftcdn.net/jpg/04/70/29/97/360_F_470299797_UD0eoVMMSUbHCcNJCdv2t8B2g1GVqYgs.jpg',
-            })
-        }
-    }, [selectedImage, userInput])
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -47,20 +33,20 @@ const JualMobil = () => {
             ...userInput,
             [name]: value,
         })
-    }
-
+    }    
 
     const handleSubmit = (e) => {
         e.preventDefault()
         dispatch(addCars({
             id: uuidv4(),
+            img: selectedImage ? URL.createObjectURL(selectedImage) : noPhoto,
             ...userInput
         }))
         setUserInput(defaultValue)
     }
 
 
-    const { year, name, merek, type } = userInput;
+    const { year, groupModel, brand, model } = userInput;
 
     return (
         <div className='jual-mobil-container'>
@@ -71,23 +57,23 @@ const JualMobil = () => {
                 <div className='input-jual-container'>
                     <Select
                         title='Merek'
-                        name='merek'
+                        name='brand'
                         options={listMerek}
-                        value={merek}
+                        value={brand}
                         handleChange={handleChange}
                     />
                     <Select
                         title='Model'
-                        name='name'
+                        name='groupModel'
                         options={listModel}
-                        value={name}
+                        value={groupModel}
                         handleChange={handleChange}
                     />
                     <Select
                         title='Tipe'
-                        name='type'
+                        name='model'
                         options={listTypes}
-                        value={type}
+                        value={model}
                         handleChange={handleChange}
                     />
                     <Select
